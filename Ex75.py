@@ -25,3 +25,35 @@ Total: R$ 9.00
 Dinheiro: R$ 20.00
 Troco: R$ 11.00
 '''
+
+
+def linhas(tamanho=30):
+    return '-' * tamanho
+
+
+produto = 1
+valor_total = 0
+troco = 0
+
+while True:
+    try:
+        valor_produto = float(input(f'Produto {produto}: R$'))
+        if valor_produto == 0:
+            break
+        else:
+            valor_total += valor_produto
+            produto += 1
+            continue
+    except ValueError:
+        print('\033[31mERRO! Digite um valor válido.\033[m')
+
+
+print(linhas())
+
+print(f'Total: R${valor_total:.2f}')
+
+valor_recebido = float(input(f'Dinheiro: R$'))
+
+troco = valor_recebido - valor_total
+
+print(f'Troco: R${troco:.2f}'.replace('.', ','))
